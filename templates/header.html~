@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Python Programming Tutorials</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<header>
+	<div class="navbar-header">
+      <a class="navbar-brand" href="/">
+	  <img style="max-width:120px; margin-top: -7px;" src="{{ url_for('static', filename='images/mainlogo.png') }}">
+	  </a>
+    </div>
+	
+	
+	<div class = "container-fluid">
+
+		<a href="/dashboard/"><button type="button" class="btn btn-primary" aria-label="Left Align" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px"> Start Learning
+		</button></a>
+
+		<ul class="nav navbar-nav navbar-right">
+		    <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 100px;"  class="container-fluid">
+				{% if session.logged_in %}
+				<nav>
+				<ul class="nav nav-pills pull-right">
+				<li role="presentation" ><a href="{{ url_for('github') }}"><img src='/static/images/github.png' style="width:34px;height:32px;"></a></li>
+	      			<li><a href="{{ url_for('linkedin') }}"><img src="/static/images/linkedin.png" style="width:34px;height:32px;"></a></li>
+				<li role="presentation" ><a href="/interactive/"> Interactive   </a></li>
+				<li role="presentation" class="active"><a href="/logout/">Logout   </a></li>
+				</ul>
+				</nav>
+				{% else %}
+				<nav>
+				<ul class="nav nav-pills pull-right">
+				<li><a href="{{ url_for('github') }}"><img src='/static/images/github.png' style="width:34px;height:32px;"></a></li>
+	      			<li><a href="{{ url_for('linkedin') }}"><img src="/static/images/linkedin.png" style="width:34px;height:32px;"></a></li>
+				<li role="presentation" ><a href="/interactive/"> Interactive</a></li>
+				<li role="presentation" class="active"><a href="/login/">Login   </a></li>
+				<li role="presentation" ><a href="/register/">Sign Up</a></li>
+				</ul>
+				</nav>
+				{% endif %}
+			</div>
+		  </div>
+      </ul>
+
+	</ul>
+	
+	</div>
+	
+</header>
+
+<body>
+   <div class="container-fluid" style="min-height:100%">
+	{% block body %}{% endblock %}
+  </div>
+
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>	  
+	  
